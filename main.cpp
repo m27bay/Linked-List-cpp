@@ -18,5 +18,14 @@ int main(int argc, char const *argv[])
   List l4=l3;
   std::cout << "l4 : ";
   l4.print();
+
+  List l5;
+  l5.addNodeEnd(10);
+  std::cout << "l5 : ";
+  l5.print();
+  l5.addNodeEnd(100);
+  std::cout << "l5 : ";
+  l5.print();
+
   return 0;
 }

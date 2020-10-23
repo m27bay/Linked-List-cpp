@@ -64,8 +64,7 @@ Node &Node::operator=(const Node& other)
     }
     else
     {
-      this->next = other.next;
-      // this->next = new Node();
+      this->next = new Node();
     }
   }
 
@@ -99,16 +98,6 @@ List &List::operator=(const List& other)
   return *this;
 }
 
-// List &List::operator+=(const List& other)
-// {
-//   this->size += other.size;
-
-// }
-
-List &List::operator+=(const Node& other)
-{
-
-}
 /* end overloaded */
 
 /* Methodes */
@@ -129,6 +118,29 @@ void List::print() const
       current = current->next;
     }
     std::cout << current->data << " }" << std::endl;
+  }
+}
+
+void List::addNodeEnd(int newData)
+{
+  Node* newNode = new Node(newData);
+
+  if (!this->first)
+  {
+    this->first = newNode;
+    this->size = 1;
+  }
+  else
+  {
+    Node* current = this->first;
+
+    while (current->next)
+    {
+      current = current->next;
+    }
+
+    current->next = newNode;
+    this->size+=1;
   }
 }
 /* End methodes */

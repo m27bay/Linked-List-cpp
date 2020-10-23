@@ -41,10 +41,10 @@ class List
     List &operator=(const List&);
 
     List &operator+=(const List&);
-    List &operator+=(const Node&);
 
     /* Methodes */
     void print() const;
+    void addNodeEnd(int newData);
 
     /* Destructor */
     ~List();
