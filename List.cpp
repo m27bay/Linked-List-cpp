@@ -2,33 +2,33 @@
 #include "List.hpp"
 
 /* Builders */
-Node::Node() : data(0), next(nullptr) {}
-List::List() : size(0), first(nullptr) {}
+NodeInt::NodeInt() : data(0), next(nullptr) {}
+ListInt::ListInt() : size(0), first(nullptr) {}
 
-Node::Node(const Node& other)
+NodeInt::NodeInt(const NodeInt& other)
 {
   this->data = other.data;
   this->next = other.next;
 }
 
-List::List(const List& other)
+ListInt::ListInt(const ListInt& other)
 {
   this->size = other.size;
 
   // Create the first element
-  Node* firstNode = new Node(other.first->data);
-  this->first = firstNode;
+  NodeInt* firstNodeInt = new NodeInt(other.first->data);
+  this->first = firstNodeInt;
 
   // Creation current
-  Node* currentThis = first;
-  Node* currentOther = other.first->next;
+  NodeInt* currentThis = first;
+  NodeInt* currentOther = other.first->next;
 
   // Ride in currentOther
   while (currentOther)
   {
     // Init next
     currentThis->next = currentOther;
-    // currentThis->next = new Node(currentOther->data);
+    // currentThis->next = new NodeInt(currentOther->data);
 
     // Skip to the next
     currentOther = currentOther->next;
@@ -36,59 +36,51 @@ List::List(const List& other)
   }
 }
 
-Node::Node(int newData)
+NodeInt::NodeInt(int newData)
 {
   this->data = newData;
   this->next = nullptr;
 }
 
-List::List(int newData)
+ListInt::ListInt(int newData)
 {
-  Node* firstNode = new Node(newData);
-  this->first = firstNode;
+  NodeInt* firstNodeInt = new NodeInt(newData);
+  this->first = firstNodeInt;
   this->size = 1;
 }
 /* End builders */
 
 /* Overloaded */
-Node &Node::operator=(const Node& other)
+NodeInt &NodeInt::operator=(const NodeInt& other)
 {
   if (this != &other)
   {
     this->data = other.data;
     delete this->next;
-
-    if (!other.next)
-    {
-      this->next = nullptr;
-    }
-    else
-    {
-      this->next = new Node();
-    }
+    this->next = other.next;
   }
 
   return *this;
 }
 
-List &List::operator=(const List& other)
+ListInt &ListInt::operator=(const ListInt& other)
 {
   this->size = other.size;
 
   // Create the first element
-  Node* firstNode = new Node(other.first->data);
-  this->first = firstNode;
+  NodeInt* firstNodeInt = new NodeInt(other.first->data);
+  this->first = firstNodeInt;
 
   // Creation current
-  Node* currentThis = first;
-  Node* currentOther = other.first->next;
+  NodeInt* currentThis = first;
+  NodeInt* currentOther = other.first->next;
 
   // Ride in currentOther
   while (currentOther)
   {
     // Init next
     currentThis->next = currentOther;
-    // currentThis->next = new Node(currentOther->data);
+    // currentThis->next = new NodeInt(currentOther->data);
 
     // Skip to the next
     currentOther = currentOther->next;
@@ -101,7 +93,7 @@ List &List::operator=(const List& other)
 /* end overloaded */
 
 /* Methodes */
-void List::print() const
+void ListInt::print() const
 {
   if (!this->first)
   {
@@ -109,7 +101,7 @@ void List::print() const
   }
   else
   {
-    Node* current = this->first;
+    NodeInt* current = this->first;
 
     std::cout << "{ ";
     while (current->next)
@@ -121,35 +113,66 @@ void List::print() const
   }
 }
 
-void List::addNodeEnd(int newData)
+void ListInt::addNodeIntEnd(int newData)
 {
-  Node* newNode = new Node(newData);
+  NodeInt* newNodeInt = new NodeInt(newData);
 
   if (!this->first)
   {
-    this->first = newNode;
+    this->first = newNodeInt;
     this->size = 1;
   }
   else
   {
-    Node* current = this->first;
+    NodeInt* current = this->first;
 
     while (current->next)
     {
       current = current->next;
     }
 
-    current->next = newNode;
+    current->next = newNodeInt;
     this->size+=1;
+  }
+}
+
+void ListInt::addNodeIntFirst(int newData)
+{
+  NodeInt* newNodeInt = new NodeInt(newData);
+
+  if (!this->first)
+  {
+    this->first = newNodeInt;
+    this->size = 1;
+  }
+  else
+  {
+    newNodeInt->next = this->first;
+    this->first = newNodeInt;
+    this->size+=1;
+  }
+}
+
+void ListInt::dellNodeIntFirst()
+{
+  if (!this->first)
+  {
+    std::cout << "ERROR : list empty";
+    return;
+  }
+  else
+  {
+    this->first = this->first->next;
+    this->size-=1;
   }
 }
 /* End methodes */
 
 /* Destructor */
-List::~List()
+ListInt::~ListInt()
 {
-  Node* current = this->first;
-  Node* tmp;
+  NodeInt* current = this->first;
+  NodeInt* tmp;
 
   while (current)
   {
@@ -159,11 +182,5 @@ List::~List()
   }
 }
 
-Node::~Node()
-{
-  if (this->next)
-  {
-    delete this->next;
-  }
-}
+NodeInt::~NodeInt() {}
 /* End destructor */

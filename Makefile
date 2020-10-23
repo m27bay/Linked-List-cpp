@@ -13,6 +13,15 @@ list.o : List.cpp List.hpp
 vg :
 	valgrind ./main
 
+vg2 :
+	valgrind --leak-check=full ./main
+
+vg3 :
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main
+
+gdb :
+	gdb ./main
+
 clean :
 	rm *.o
 	rm main

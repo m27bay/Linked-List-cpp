@@ -1,53 +1,54 @@
-#ifndef LIST_HPP
-#define LIST_HPP
+#ifndef List_HPP
+#define List_HPP
 
-class Node
+class NodeInt
 {
-  friend class List;
+  friend class ListInt;
 
   private:
     /* Attributes */
     int data;
-    Node* next;
+    NodeInt* next;
 
   public:
     /* Builders */
-    Node(); // Default
-    Node(const Node&); // Copy
-    Node(int newData);
+    NodeInt(); // Default
+    NodeInt(const NodeInt&); // Copy
+    NodeInt(int newData);
 
     /* Overloaded */
-    Node &operator=(const Node&);
+    NodeInt &operator=(const NodeInt&);
 
     /* Destructor */
-    ~Node();
-
+    ~NodeInt();
 };
 
-class List
+class ListInt
 {
   private:
     /* Attributes */
     int size;
-    Node* first;
+    NodeInt* first;
 
   public:
     /* Builders */
-    List(); // Default
-    List(const List&); // Copy
-    List(int first);
+    ListInt(); // Default
+    ListInt(const ListInt&); // Copy
+    ListInt(int first);
 
     /* Overloaded */
-    List &operator=(const List&);
-
-    List &operator+=(const List&);
+    ListInt &operator=(const ListInt&);
 
     /* Methodes */
     void print() const;
-    void addNodeEnd(int newData);
+
+    void addNodeIntEnd(int newData);
+    void addNodeIntFirst(int newData);
+
+    void dellNodeIntFirst();
 
     /* Destructor */
-    ~List();
+    ~ListInt();
 };
 
 #endif
