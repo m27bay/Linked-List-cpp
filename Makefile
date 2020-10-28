@@ -1,14 +1,17 @@
 all : compile
 	./main
 
-compile : main.o list.o
-	g++ main.o List.o -o main
+compile : main.o list.o CString.o
+	g++ main.o List.o CString.o -o main
 
 main.o : main.cpp
 	g++ -c -Wall main.cpp
 
 list.o : List.cpp List.hpp
 	g++ -c -Wall List.cpp
+
+CString.o : CString.cpp CString.hpp
+	g++ -c -Wall CString.cpp
 
 vg :
 	valgrind ./main
@@ -25,3 +28,4 @@ gdb :
 clean :
 	rm *.o
 	rm main
+	ls
