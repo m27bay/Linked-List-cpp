@@ -375,6 +375,41 @@ int ListCString::addNodeCStringFirst(CString newData)
 
   return 1;
 }
+
+int ListCString::addNodeCStringIndex(int index, CString newData)
+{
+  if (index < 0 || index > this->size)
+  {
+    std::cout << "ERROR : index out of band" << std::endl;
+    return 0;
+  }
+  else if (index == 0)
+  {
+    addNodeCStringFirst(newData);
+    return 1;
+  }
+  else if (index == this->size)
+  {
+    addNodeCStringEnd(newData);
+    return 1;
+  }
+  else
+  {
+    NodeCString* current = this->first;
+    int tmp = 1;
+
+    while (tmp < index)
+    {
+      current = current->next;
+      tmp++;
+    }
+
+    NodeCString* newNodeCString = new NodeCString(newData);
+    newNodeCString->next = current->next;
+    current->next = newNodeCString;
+    return 1;
+  }
+}
 //
 
 // Dell

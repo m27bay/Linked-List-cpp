@@ -83,6 +83,7 @@ class ListCString
 
     int addNodeCStringEnd(CString newData);
     int addNodeCStringFirst(CString newData);
+    int addNodeCStringIndex(int index, CString newData);
 
     int dellNodeCStringFirst();
     int dellNodeCStringEnd();

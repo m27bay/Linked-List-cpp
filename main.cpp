@@ -68,6 +68,26 @@ void testListCString()
   l5.dellNodeCStringFirst();
   std::cout << "l5 : ";
   l5.print();
+  l5.dellNodeCStringFirst();
+  std::cout << "l5 : ";
+  l5.print();
+
+  l5.addNodeCStringFirst("je");
+  std::cout << "l5 : ";
+  l5.print();
+  l5.addNodeCStringIndex(1, "tu");
+  std::cout << "l5 : ";
+  l5.print();
+  l5.addNodeCStringIndex(0, "vide");
+  std::cout << "l5 : ";
+  l5.print();
+  l5.addNodeCStringIndex(4, "error");
+  std::cout << "l5 : ";
+  l5.print();
+  l5.addNodeCStringIndex(3, "nous");
+  std::cout << "l5 : ";
+  l5.print();
+
 }
 
 int main(int argc, char const *argv[])
